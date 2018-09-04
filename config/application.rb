@@ -10,6 +10,7 @@ module Miuraspace
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
     
+    config.serve_static_assets = true
     config.generators do |g|
       g.test_framework       false
       g.helper               false
