@@ -18,6 +18,12 @@ body {
   -moz-font-feature-settings: "liga", "kern";
 }
 
+.success {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+}
+
 /* -- Main style ------------------------------------ */
 .btn {
   font-family: "Lato", 'Helvetica Neue, Helvetica, Arial', sans-serif;
