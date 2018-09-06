@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :edit]
 
   def index
     @prototypes = Prototype.all
@@ -23,11 +23,14 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype = Prototype.new
-    @prototype.captured_images.build
   end
 
   def update
+    prototype = Prototype.find(params[:id])
+    if prototype.user_id = current_user.id
+      prototype.update(prototype_params)
+    end
+    redirect_to action: :index
   end
 
   private
