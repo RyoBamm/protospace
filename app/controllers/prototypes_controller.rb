@@ -22,6 +22,14 @@ class PrototypesController < ApplicationController
   def show
   end
 
+  def edit
+    @prototype = Prototype.new
+    @prototype.captured_images.build
+  end
+
+  def update
+  end
+
   private
 
   def set_prototype
