@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :edit]
 
   def index
     @prototypes = Prototype.all
@@ -22,12 +22,23 @@ class PrototypesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    prototype = Prototype.find(params[:id])
+    if prototype.user_id = current_user.id
+      prototype.update(prototype_params)
+      flash[:flash] = "編集しました"
+    end
+    redirect_to action: :index
+  end
+    
   def destroy
     prototype = Prototype.find(params[:id])
     if prototype.user_id == current_user.id
       prototype.destroy
     end
-  end
 
   private
 
