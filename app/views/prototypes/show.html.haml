@@ -37,3 +37,5 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+        %li
+          = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'
