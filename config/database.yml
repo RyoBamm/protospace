@@ -10,16 +10,17 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-  adapter: mysql2
+  adapter: sqlite3
   encoding: utf8
   pool: 5
   username: root
   password:
   socket: /tmp/mysql.sock
+  timeout: 5000
 
 development:
   <<: *default
-  database: protospace-in-dev_development
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,6 +51,6 @@ test:
 production:
   adapter: postgresql
   encoding: utf8
-  database: protospace-in-dev_production
+  database: db/production.sqlite3
   username: protospace-in-dev
   password: <%= ENV['PROTOSPACE-IN-DEV_DATABASE_PASSWORD'] %>
