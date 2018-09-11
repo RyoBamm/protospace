@@ -8,6 +8,7 @@ class PrototypesController < ApplicationController
   def new
     @prototype = Prototype.new
     @prototype.captured_images.build
+    @tag = Tag.new
   end
 
   def create
@@ -33,7 +34,7 @@ class PrototypesController < ApplicationController
     end
     redirect_to action: :index
   end
-    
+
   def destroy
     prototype = Prototype.find(params[:id])
     if prototype.user_id == current_user.id
