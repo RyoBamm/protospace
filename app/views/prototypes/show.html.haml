@@ -39,16 +39,22 @@
           %a{href: "#", class: "btn btn-default"} wireframe
         %li
           = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'
+        %li
+          = link_to '編集', "/prototypes/#{@prototype.id}/edit", class: 'btn-default btn'
+
   .comments_container
     -if current_user
       = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
         %textarea{cols: "30", name: "content", placeholder: "Post Your Comment!!", rows: "2"}
         %input{type: "submit", value: "SENT"}
-    .comments_container__comments
-      %h4 <COMMENTS>
+    .comments_container__comments.user-nav
+      %h4
+        <COMMENTS>
       -if @comments
         - @comments.each do |comment|
-          = image_tag(comment.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
-          = link_to comment.user.name, user_path(comment.user)
+          .comment_wrapper
+            .comment__left
+              = image_tag(comment.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+              = link_to comment.user.name, user_path(comment.user)
 
-          .comment #{comment.content}
+            .comment__right #{comment.content}

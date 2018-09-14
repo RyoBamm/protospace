@@ -1,0 +1,10 @@
+.comments_container{
+  h4{
+    color: red;
+  }
+  &__comments{
+    .comment_wrapper{
+      border: 1px, solid, gray;
+    }
+  }
+}
