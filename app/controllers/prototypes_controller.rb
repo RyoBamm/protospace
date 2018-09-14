@@ -30,12 +30,13 @@ class PrototypesController < ApplicationController
     # binding.pry
     if @prototype[:user_id] == current_user.id
       if @prototype.update(prototype_params)
-        flash[:flash] = "編集しました"
+        flash.now[:flash] = "編集しました"
+        render :index
       else
-        redirect_to action: :edit, alert: 'prototype was unsuccessfully updated'
+        render :edit, alert: 'prototype was unsuccessfully updated'
       end
+      render :edit
     end
-    redirect_to action: :index
   end
 
   def destroy
