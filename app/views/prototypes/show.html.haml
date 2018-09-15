@@ -42,6 +42,8 @@
         %li
           = link_to '編集', "/prototypes/#{@prototype.id}/edit", class: 'btn-default btn'
 
+          / test
+
   .comments_container
     -if current_user
       = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
