@@ -26,9 +26,9 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    @prototype = Prototype.find(params[:id])
-    if @prototype.user_id = current_user.id
-      @prototype.update(prototype_params)
+    prototype = Prototype.find(params[:id])
+    if prototype.user_id = current_user.id
+      prototype.update(prototype_params)
       flash[:flash] = "編集しました"
     end
     redirect_to action: :index
@@ -53,7 +53,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:id, :content, :status]
     )
   end
 end

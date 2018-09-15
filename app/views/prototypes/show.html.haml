@@ -14,23 +14,26 @@
             .degree
               = @prototype.user.position
 
-    - if user_signed_in?
-      - if @prototype.like_user(current_user.id)
-        = button_to prototype_like_path(prototype_id: @prototype.id), method: :delete, id: "like-buttons", remote: true do
-          = image_tag("icons8-heart-outline-30.png")
-          %span
-            = @prototype.likes_count
-      - else
-        = button_to prototype_likes_path(@prototype), id: "like-buttons", remote: true do
-          = image_tag("icons8-heart-outline-40.png")
-          %span
-            = @prototype.likes_count
-    - else
-      = image_tag("icon_heart.svg")
-      %span
-        = @prototype.likes_count
+    = render partial: 'likes/like', locals: { prototype: @prototypes }
 
-  / = render partial: 'likes/like', locals: { prototype: @prototypes }
+    / - if user_signed_in?
+    /   - if @prototype.like_user(current_user.id)
+    /     = button_to prototype_like_path(prototype_id: @prototype.id), method: :delete, id: "like-buttons", remote: true do
+    /       = image_tag("icons8-heart-outline-30.png")
+    /       %span
+    /         = @prototype.likes_count
+    /   - else
+    /     = button_to prototype_likes_path(@prototype), id: "like-buttons", remote: true do
+    /       = image_tag("icons8-heart-outline-40.png")
+    /       %span
+    /         = @prototype.likes_count
+    / - else
+    /   = image_tag("icon_heart.svg")
+    /   %span
+    /     = @prototype.likes_count
+
+  
+
   .col-md-3
     %h4 User Action
     %ul.proto-tag-list.list-inline

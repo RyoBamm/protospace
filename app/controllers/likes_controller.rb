@@ -3,8 +3,11 @@ class LikesController < ApplicationController
     @like = Like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
     @likes = Like.where(prototype_id: params[:prototype_id])
     @prototypes = Prototype.all
-    render "show"
-    # redirect_to :root, notice: 'like was successfully created'
+    # respond_to do |format|
+    # format.html
+    # format.json
+    # render "show"
+    redirect_to :root, notice: 'like was successfully created'
   end
 
   def destroy
@@ -12,7 +15,10 @@ class LikesController < ApplicationController
     like.destroy
     @likes = Like.where(prototype_id: params[:prototype_id])
     @prototypes = Prototype.all
-    render "show"
-    # redirect_to :root, notice: 'like was successfully deleted'
+    # respond_to do |format|
+    # format.html
+    # format.json
+    # render "show"
+    redirect_to :root, notice: 'like was successfully deleted'
   end
 end
