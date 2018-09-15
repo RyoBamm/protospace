@@ -1,19 +1,17 @@
 .redbox
 
 - if user_signed_in?
-  - if @prototype.like_user(current_user.id)
-    = button_to prototype_like_path(like, prototype_id: prototype.id), method: :delete, id: "like-button", remote: true do
+  - if prototype.like_user(current_user.id)
+    = button_to "あ", prototype_like_path(like, prototype_id: prototype.id), method: :delete, id: "like-button", remote: true do
       = image_tag("https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/189447/e17e8ff0f2cdbce2e87f4a6e25d56106_c04ccff5d0d8ffb4c49717ea38c8de06.jpg?width=410")
         %span
-          = @prototype.likes_count
+          = prototype.likes_count
   - else
     = button_to prototype_likes_path(tweet), id: "like-button", remote: true do
       = image_tag("https://cdn.amebaowndme.com/madrid-prd/madrid-web/images/sites/189447/e17e8ff0f2cdbce2e87f4a6e25d56106_c04ccff5d0d8ffb4c49717ea38c8de06.jpg?width=410")
       %span
-        = @prototype.likes_count
+        = prototype.likes_count
 - else
   = image_tag("icon_heart.svg")
   %span
-    = @prototype.likes_count
-
-
+    = prototype.likes_count

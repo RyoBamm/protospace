@@ -14,10 +14,30 @@
             .degree
               = @prototype.user.position
 
-  .redbox
-  = render partial: 'prototypes/like', collection: @prototypes
+    - if user_signed_in?
+      - if @prototype.like_user(current_user.id)
+        = button_to prototype_like_path(prototype_id: @prototype.id), method: :delete, id: "like-buttons" do
+          = image_tag("icons8-heart-outline-30.png")
+          %span
+            = @prototype.likes_count
+      - else
+        = button_to prototype_likes_path(@prototype), id: "like-buttons" do
+          = image_tag("icons8-heart-outline-40.png")
+          %span
+            = @prototype.likes_count
+    - else
+      = image_tag("icon_heart.svg")
+      %span
+        = @prototype.likes_count
 
-
+  / = render partial: 'likes/like', locals: { prototype: @prototypes }
+  .col-md-3
+    %h4 User Action
+    %ul.proto-tag-list.list-inline
+      %li
+        = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'
+      %li
+        = link_to '編集', edit_path(prototype_id: @prototype.id), class: 'btn-default btn'
 
   .row
     .col-md-9.image-box
@@ -43,5 +63,3 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
-        %li
-          = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'

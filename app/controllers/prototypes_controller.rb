@@ -26,9 +26,9 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id = current_user.id
-      prototype.update(prototype_params)
+    @prototype = Prototype.find(params[:id])
+    if @prototype.user_id = current_user.id
+      @prototype.update(prototype_params)
       flash[:flash] = "編集しました"
     end
     redirect_to action: :index
