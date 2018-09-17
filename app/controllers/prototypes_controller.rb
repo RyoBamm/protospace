@@ -53,7 +53,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:id, :content, :status]
+      captured_images_attributes: [:content, :status]
     )
   end
 end
