@@ -3,13 +3,16 @@
     = button_to prototype_like_path(prototype_id: @prototype.id), method: :delete, id: "like-buttons" do
       = image_tag("icons8-heart-outline-30.png")
       %span
+        LIKE
         = @prototype.likes_count
   - else
     = button_to prototype_likes_path(@prototype), id: "like-buttons" do
       = image_tag("icons8-heart-outline-40.png")
       %span
+        LIKE
         = @prototype.likes_count
 - else
   = image_tag("icon_heart.svg")
   %span
+    LIKE
     = @prototype.likes_count
