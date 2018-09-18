@@ -1,0 +1,12 @@
+.comment_wrapper
+  .comment_left
+    = image_tag(comment.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+    = link_to comment.user.name, user_path(comment.user)
+
+  .comment_right
+    = comment.content
+    -if current_user.id == comment.user_id
+      = link_to 'Edit', "/prototypes/#{@prototype.id}/edit", class: 'btn-default btn'
+  .comment_bottom
+
+
