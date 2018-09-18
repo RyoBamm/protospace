@@ -1,0 +1,3 @@
+// $("#like-buttons").html("<%= j(render 'like', locals: { prototypes: @prototypes, likes: @likes, like: @like}) %>")
+$("#like-buttons").html("#{j(render 'like', locals: { prototypes: @prototypes, likes: @likes, like: @like})}")
+console.log(@prototypes)
