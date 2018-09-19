@@ -20,7 +20,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @comments = @prototype.comments.includes(:user)
+    @comments = @prototype.comments.order('created_at DESC').includes(:user)
   end
 
   def edit
