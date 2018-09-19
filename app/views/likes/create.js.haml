@@ -1,3 +1,3 @@
 // $("#like-buttons").html("<%= j(render 'like', locals: { prototypes: @prototypes, likes: @likes, like: @like}) %>")
-$("#like-buttons").html("#{j(render 'like', locals: { prototypes: @prototypes, likes: @likes, like: @like})}")
-console.log(@prototypes)
+// $("#like-buttons").html("#{j(render 'like', locals: { prototypes: @prototypes, likes: @likes, like: @like})}")
+$('#likes_buttons_#{@prototype.id}').html("#{j(render partial: 'likes/like', locals: {prototype: @prototype})}");
