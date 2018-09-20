@@ -12,7 +12,7 @@
 
       .vertical_like
         %p
-          - if (prototype.likes_count.nil?)
+          - if (prototype.likes_count.nil?)||(prototype.likes_count == 0)
             = image_tag("grayheart.png") 
             LIKE
             = 0
