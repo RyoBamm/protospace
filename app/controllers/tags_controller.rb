@@ -4,13 +4,9 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
-  def create
-    Tag.create(tags_params)
-  end
-
-  private
-  def tags_params
-    params.require(:tag).permit(:name)
+  def show
+    @tag = Tag.find(params[:id])
+    @prototypes = @tag.prototypes
   end
 
 end

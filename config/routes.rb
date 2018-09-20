@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   resources :prototypes
   resources :users, only: [:show, :edit, :update]
-  resources :tags, only: [:index, :create]
+  resources :tags, only: [:index, :show]
 end
