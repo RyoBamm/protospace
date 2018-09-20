@@ -10,7 +10,13 @@
         .proto-posted
           = prototype.posted_date
 
-      = image_tag("icons8-heart-outline-30.png")
-      %span
-        LIKE
-        = prototype.likes_count
+      .vertical_like
+        %p
+          - if prototype.likes_count > 0
+            = image_tag("redheart.png") 
+            LIKE
+            = prototype.likes_count
+          -else
+            = image_tag("grayheart.png") 
+            LIKE
+            = 0
