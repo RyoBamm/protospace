@@ -16,8 +16,8 @@
 
     / = render partial: 'likes/like', locals: { prototype: @prototypes }
 
-    %div{:id => "likes_buttons_#{@prototype.id}"}
-      = render partial: 'likes/like', locals: { prototype: @prototype, likes: @likes}
+  %div{:id => "likes_buttons_#{@prototype.id}"}
+    = render partial: 'likes/like', locals: { prototype: @prototype, likes: @likes}
 
 
 
