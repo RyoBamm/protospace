@@ -12,11 +12,11 @@
 
       .vertical_like
         %p
-          - if prototype.likes_count > 0
-            = image_tag("redheart.png") 
-            LIKE
-            = prototype.likes_count
-          -else
+          - if (prototype.likes_count.nil?)
             = image_tag("grayheart.png") 
             LIKE
             = 0
+          -else
+            = image_tag("redheart.png") 
+            LIKE
+            = prototype.likes_count
