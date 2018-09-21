@@ -9,3 +9,14 @@
           = link_to prototype.user.name, user_path(prototype.user)
         .proto-posted
           = prototype.posted_date
+
+      .vertical_like
+        %p
+          - if (prototype.likes_count.nil?)||(prototype.likes_count == 0)
+            = image_tag("grayheart.png") 
+            LIKE
+            = 0
+          -else
+            = image_tag("redheart.png") 
+            LIKE
+            = prototype.likes_count
