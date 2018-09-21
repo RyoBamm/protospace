@@ -35,7 +35,7 @@
       %ul.proto-tag-list.list-inline
         - @prototype.tags.each do |tag|
           %li
-            %a{href: "#{}", class: "btn btn-default"}
+            %a{href: "/tags/#{tag.id}", class: "btn btn-default"}
               = tag.name
         %li
           = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'

@@ -22,4 +22,22 @@ class Prototype < ActiveRecord::Base
   def posted_date
     created_at.strftime('%b %d %a')
   end
+
+  def save_tags(saveprototype_tags)
+    current_tags = Tag.pluck(:name) unless self.tags.nil?
+    binding.pry
+    old_tags = current_tags - saveprototype_tags
+    new_tags = saveprototype_tags - current_tags
+
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(name:old_name)
+    end
+
+    new_tags.each do |new_name|
+      post_tag = Tag.find_or_create_by(name:new_name)
+      self.tags << post_tag
+    end
+
+  end
+
 end
