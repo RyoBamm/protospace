@@ -12,7 +12,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180913003553) do
+=======
+ActiveRecord::Schema.define(version: 20180913011211) do
+>>>>>>> master
 =======
 ActiveRecord::Schema.define(version: 20180913011211) do
 >>>>>>> master
@@ -26,8 +30,12 @@ ActiveRecord::Schema.define(version: 20180913011211) do
   add_index "captured_images", ["prototype_id"], name: "index_captured_images_on_prototype_id"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   create_table "comments", force: :cascade do |t|
     t.text     "content"
+=======
+  create_table "likes", force: :cascade do |t|
+>>>>>>> master
 =======
   create_table "likes", force: :cascade do |t|
 >>>>>>> master
@@ -43,8 +51,14 @@ ActiveRecord::Schema.define(version: 20180913011211) do
     t.text     "concept"
     t.integer  "user_id"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+=======
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "likes_count"
+>>>>>>> master
 =======
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
