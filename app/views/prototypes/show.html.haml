@@ -76,7 +76,7 @@
     .form_wrapper
       -if user_signed_in?
         = form_tag("/prototypes/#{@prototype.id}/comments", method: :post, id: "new_comment") do
-          %textarea{cols: "30", name: "content", placeholder: "Post A Comment !!", rows: "2", class: "comment_form", maxlength: '64'}
+          %textarea{cols: "30", name: "content", placeholder: "Post A Comment !!", rows: "2", class: "comment_form", maxlength: '200'}
           %input{type: "submit", value: "SEND", class: "send_btn "}
       -else
         = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
