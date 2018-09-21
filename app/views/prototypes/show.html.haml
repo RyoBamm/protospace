@@ -76,11 +76,11 @@
     .form_wrapper
       -if user_signed_in?
         = form_tag("/prototypes/#{@prototype.id}/comments", method: :post, id: "new_comment") do
-          %textarea{cols: "30", name: "content", placeholder: "Post Your Comment !!", rows: "2", class: "comment_form", maxlength: '64'}
+          %textarea{cols: "30", name: "content", placeholder: "Post A Comment !!", rows: "2", class: "comment_form", maxlength: '64'}
           %input{type: "submit", value: "SEND", class: "send_btn "}
       -else
         = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
-          %textarea{cols: "30", name: "content", placeholder: "Post Your Comment !!", rows: "2", class: "comment_form", maxlength: '45'}
+          %textarea{cols: "30", name: "content", placeholder: "Post A Comment !!", rows: "2", class: "comment_form", maxlength: '45'}
           %input{type: "submit", value: "SEND", class: "send_btn redirect"}
     %h4 COMMENTS
     .comments_area{style: "width:100%;height:600px;overflow:auto;"}
