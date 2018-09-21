@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit]
+  before_action :set_prototype, only: [:show, :edit, :update]
 
   def index
     @prototypes = Prototype.all.page(params[:page]).per(5)
@@ -16,22 +16,27 @@ class PrototypesController < ApplicationController
       redirect_to :root, notice: 'New prototype was successfully created'
     else
       redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
-     end
+    end
   end
 
   def show
+    @comments = @prototype.comments.order('created_at DESC').includes(:user)
   end
 
   def edit
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id = current_user.id
-      prototype.update(prototype_params)
-      flash[:flash] = "編集しました"
+    # binding.pry
+    if @prototype[:user_id] == current_user.id
+      if @prototype.update(prototype_params)
+        flash.now[:flash] = "編集しました"
+        render :index
+      else
+        render :edit, alert: 'prototype was unsuccessfully updated'
+      end
+      render :edit
     end
-    redirect_to action: :index
   end
 
   def destroy
@@ -53,7 +58,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:id, :content, :status]
     )
   end
 end

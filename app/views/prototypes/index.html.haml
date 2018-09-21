@@ -1,4 +1,4 @@
-
+/ - binding.pry
 .jumbotron
   .container.text-center
     = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
@@ -15,7 +15,7 @@
 
 .container.proto-list
   .row
-    = render partial: 'prototypes/prototype', collection: @prototypes
+    = render partial: 'prototype', collection: @prototypes
 
 .text-center
   =paginate(@prototypes)

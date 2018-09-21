@@ -361,17 +361,100 @@ body {
   }
 
   .proto-comments {
+    padding: 0.5em 0 1em 30px;
+    margin: 2em 0;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+    max-width: 700px;
     h4 {
+      padding-left: 10px;
+      margin: 40px 0 30px;
+      border-left: solid 5px #7db4e6;
+    }
+    .form_wrapper{
+      width: 100%;
+      padding: 0 5px;
+      .comment_form{
+        width: 470px;
+        height: 60px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: solid 2px #DDDDDD;
+        padding: 5px;
+        float: left;
+        resize: none;
+      }
+      .comment_form:focus{
+        border: solid 2px #BBBBBB;
+      }
+      .send_btn{
+        width: 88px;
+        font-weight: 400;
+        height: 40px;
+        color: #FFF;
+        margin: 10px 0 10px 23px;
+        border-radius: 10px;
+        display: inline-block;
+        padding: 0.5em 1em;
+        text-decoration: none;
+        background: #87CEFA;
+        border-bottom: solid 4px #627295;
+      }
+      .send_btn:active{
+        border: none;
+        border-bottom: solid 0.5px #627295;
+        transform: translateY(3.5px);
+      }
+    }
+    .comment_wrapper{
       padding-bottom: 20px;
-    }
-
-    form {
-      margin: 40px 0;
-    }
-
-    .form-group {
-      textarea {
-        width: 100%;
+      margin: 20px 0;
+      .comment_left{
+        float: left;
+        text-align: center;
+        img{
+          border-radius: 50%;
+        }
+      }
+      .comment_right{
+        font-weight: bold;
+        position: relative;
+        display: inline-block;
+        margin: 0 0 0 40px;
+        padding: 10px 20px;
+        min-height: 70px;
+        max-height: 100%;
+        width: 500px;
+        color: #555;
+        font-size: 16px;
+        background: #e0edff;
+        line-height: 50px;
+        border-radius: 10px;
+        .comment_text{
+          width: 461px;
+        }
+        .btn{
+          float: right;
+          background-color: #fff;
+          border-radius: 10px;
+          margin-top: 7px;
+        }
+      }
+      .comment_right:before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -30px;
+        margin-top: -15px;
+        border: 15px solid transparent;
+        border-right: 15px solid #e0edff;
+      }
+      .comment_bottom{
+        content: "";
+        display: block;
+        clear: both;
+        visibility:hidden;
       }
     }
   }
@@ -624,6 +707,8 @@ body {
   font-size: 30px;
   font-weight: 200;
 }
+
+
 
 
 /* -- flash messages ------------------------------------ */
