@@ -1,4 +1,6 @@
 $(function(){
+$(document).on('turbolinks:load', function() {
+
   // 各種HTMLを作成
   function buildHTML(comment){
     var html = `<div class = "comment_wrapper" >
@@ -7,7 +9,9 @@ $(function(){
                     <a href="user_path(${comment.prototype_id})">${comment.user_name}</a>
                   </div>
                   <div class = "comment_right" id = ${comment.id}>
-                    ${comment.content}
+                    <div class = "comment_text">
+                      ${comment.content}
+                    </div>
                     <a class="btn-default btn comment-edit" href="/prototypes/${comment.prototype_id}/comments/${comment.id}/edit">Edit</a>
                   </div>
                   <div class = "comment_bottom"></div>
@@ -24,7 +28,9 @@ $(function(){
   }
 
   function buildUpdateHTML(comment){
-    var html = `${comment.content}
+    var html = `<div class = "comment_text">
+                  ${comment.content}
+                </div>
                 <a class="btn-default btn comment-edit" href="/prototypes/${comment.prototype_id}/comments/${comment.id}/edit">Edit</a>`
     return html;
   }
@@ -135,4 +141,5 @@ $(function(){
       alert('コメントを削除しました');
     })
   })
+})
 });

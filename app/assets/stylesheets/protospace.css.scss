@@ -422,7 +422,7 @@ body {
         position: relative;
         display: inline-block;
         margin: 0 0 0 40px;
-        padding: 10px 20px;
+        padding: 10px 21px 10px 20px;
         min-height: 70px;
         max-height: 100%;
         width: 500px;
@@ -432,7 +432,10 @@ body {
         line-height: 50px;
         border-radius: 10px;
         .comment_text{
-          width: 461px;
+          float: left;
+          min-width: 340px;
+          max-width: 461px;
+          word-wrap: break-word;
         }
         .editCommentArea{
           width: 100%;

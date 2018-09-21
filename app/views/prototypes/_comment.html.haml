@@ -6,7 +6,7 @@
   .comment_right{id: comment.id}
     .comment_text
       = comment.content
-      -if user_signed_in?
-        -if current_user.id == comment.user_id
-          = link_to 'Edit', "/prototypes/#{@prototype.id}/comments/#{comment.id}/edit", class: 'btn-default btn comment-edit'
+    -if user_signed_in?
+      -if current_user.id == comment.user_id
+        = link_to 'Edit', "/prototypes/#{@prototype.id}/comments/#{comment.id}/edit", class: 'btn-default btn comment-edit'
   .comment_bottom
