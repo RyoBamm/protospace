@@ -13,14 +13,31 @@ class CommentsController < ApplicationController
     end
   end
 
-  def delete
+  def edit
+    @comment = Comment.includes(:user).find(comment_params[:id])
+  end
+
+  def show
+    @comment = Comment.includes(:user).find(comment_params[:id])
+  end
+
+  def destroy
+    deletingComment = Comment.find(comment_params[:id])
+    @comment = deletingComment
+    if @comment.user_id == current_user.id
+      deletingComment.destroy
+    end
   end
 
   def update
+    @comment = Comment.find(comment_params[:id])
+    if @comment.user_id == current_user.id
+      @comment.update( content: comment_params[:content] )
+    end
   end
 
   private
   def comment_params
-    params.permit(:content, :prototype_id)
+    params.permit(:id, :content, :prototype_id)
   end
 end

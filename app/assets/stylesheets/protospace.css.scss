@@ -434,11 +434,34 @@ body {
         .comment_text{
           width: 461px;
         }
+        .editCommentArea{
+          width: 100%;
+          font-size: 16px;
+          border-radius: 5px;
+          border: solid 2px #DDDDDD;
+          animation: blinkAnime .8s infinite alternate;
+          @keyframes blinkAnime{
+            0%  { border-color: #DDDDDD }
+            100%{ border-color: #BBBBBB }
+          }
+          padding: 5px;
+          margin: 10px 0 0 0;
+          resize: none;
+        }
         .btn{
           float: right;
           background-color: #fff;
           border-radius: 10px;
           margin-top: 7px;
+        }
+        .comment-update{
+          margin: 0 10px 10px 0;
+        }
+        .comment-delete{
+          margin: 0 10px 10px 0;
+        }
+        .comment-cancel{
+          margin: 0 0 10px 0;
         }
       }
       .comment_right:before{
