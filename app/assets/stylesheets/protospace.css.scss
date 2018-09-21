@@ -421,13 +421,15 @@ body {
         padding: 10px 20px;
         min-height: 70px;
         max-height: 100%;
-        min-width: 500px;
-        max-width: 100%;
+        width: 500px;
         color: #555;
         font-size: 16px;
         background: #e0edff;
         line-height: 50px;
         border-radius: 10px;
+        .comment_text{
+          width: 461px;
+        }
         .btn{
           float: right;
           background-color: #fff;

@@ -7,9 +7,9 @@ $(function(){
                     <img alt="profile_photo" class="media-object" style="width: 64px; height: 64px;" src="${comment.user_avatar}">
                     <a href="user_path(${comment.prototype_id})">${comment.user_name}</a>
                   </div>
-                  <div class = "comment_right">
+                  <div class = "comment_right" id = ${comment.id}>
                     ${comment.content}
-                    <a class="btn-default btn comment-edit" href="/prototypes/1/edit" >Edit</a>
+                    <a class="btn-default btn comment-edit" href="/prototypes/1/edit" id = ${comment.id} >Edit</a>
                   </div>
                   <div class = "comment_bottom"></div>
                 </div>`
@@ -47,7 +47,6 @@ $(function(){
   // 編集画面を表示
   $('.comment-edit').on('click', function(e){
     e.preventDefault();
-    console.log(this);
   })
 
 
