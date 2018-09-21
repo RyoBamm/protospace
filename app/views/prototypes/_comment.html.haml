@@ -8,5 +8,5 @@
       = comment.content
       -if user_signed_in?
         -if current_user.id == comment.user_id
-          = link_to 'Edit', "/prototypes/#{@prototype.id}/edit", class: 'btn-default btn comment-edit', id: comment.id
+          = link_to 'Edit', "/prototypes/#{@prototype.id}/comments/#{comment.id}/edit", class: 'btn-default btn comment-edit'
   .comment_bottom
