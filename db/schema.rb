@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180912003338) do
+
+ActiveRecord::Schema.define(version: 20180913011211) do
+
 
   create_table "captured_images", force: :cascade do |t|
     t.string  "content"
@@ -21,11 +23,22 @@ ActiveRecord::Schema.define(version: 20180912003338) do
 
   add_index "captured_images", ["prototype_id"], name: "index_captured_images_on_prototype_id"
 
+
   create_table "prototype_tags", force: :cascade do |t|
     t.integer  "prototype_id", null: false
     t.integer  "tag_id",       null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "prototype_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    
   end
 
   create_table "prototypes", force: :cascade do |t|
@@ -33,6 +46,7 @@ ActiveRecord::Schema.define(version: 20180912003338) do
     t.string   "catch_copy"
     t.text     "concept"
     t.integer  "user_id"
+    t.integer  "likes_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

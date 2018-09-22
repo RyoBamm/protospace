@@ -1,0 +1,51 @@
+- if user_signed_in?
+  - unless @prototype.like_user(current_user.id).blank?
+    = link_to prototype_like_path(prototype_id: @prototype.id ,id: @prototype.likes[0].id), method: :delete, remote: true do
+      .vertical_like
+        %p
+          = image_tag("redheart.png") 
+          LIKE
+          = @prototype.likes_count
+  - else
+    = link_to prototype_likes_path(@prototype.id), method: :post, remote: true do
+      .vertical_like
+        %p
+          = image_tag("grayheart.png") 
+          LIKE
+          = @prototype.likes_count
+
+- else
+  - if @prototype.likes_count > 0
+    .vertical_like
+      %p
+        = image_tag("redheart.png") 
+        LIKE
+        = @prototype.likes_count
+  - else
+    .vertical_like
+      %p
+        = image_tag("grayheart.png") 
+        LIKE
+        = @prototype.likes_count
+
+
+
+
+/ - if user_signed_in?
+/   - if @prototype.like_user(current_user.id)
+/     = button_to prototype_like_path(prototype_id: @prototype.id), method: :delete, id: "like-buttons", remote: true do
+/       = image_tag("icons8-heart-outline-30.png")
+/       %span
+/         LIKE
+/         = @prototype.likes_count
+/   - else
+/     = button_to prototype_likes_path(@prototype), id: "like-buttons", remote: true do
+/       = image_tag("icons8-heart-outline-40.png")
+/       %span
+/         LIKE
+/         = @prototype.likes_count
+/ - else
+/   = image_tag("icon_heart.svg")
+/   %span
+/     LIKE
+/     = @prototype.likes_count

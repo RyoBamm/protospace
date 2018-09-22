@@ -13,6 +13,39 @@
             = link_to "#{@prototype.user.name}", user_path(@prototype.user)
             .degree
               = @prototype.user.position
+
+    / = render partial: 'likes/like', locals: { prototype: @prototypes }
+
+  %div{:id => "likes_buttons_#{@prototype.id}"}
+    = render partial: 'likes/like', locals: { prototype: @prototype, likes: @likes}
+
+
+
+    / - if user_signed_in?
+    /   - if @prototype.like_user(current_user.id)
+    /     = button_to prototype_like_path(prototype_id: @prototype.id), method: :delete, id: "like-buttons", remote: true do
+    /       = image_tag("icons8-heart-outline-30.png")
+    /       %span
+    /         = @prototype.likes_count
+    /   - else
+    /     = button_to prototype_likes_path(@prototype), id: "like-buttons", remote: true do
+    /       = image_tag("icons8-heart-outline-40.png")
+    /       %span
+    /         = @prototype.likes_count
+    / - else
+    /   = image_tag("icon_heart.svg")
+    /   %span
+    /     = @prototype.likes_count
+
+
+  .col-md-3
+    %h4 User Action
+    %ul.proto-tag-list.list-inline
+      %li
+        = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'
+      %li
+        = link_to '編集', edit_prototype_path, class: 'btn-default btn'
+
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
@@ -37,5 +70,19 @@
           %li
             %a{href: "/tags/#{tag.id}", class: "btn btn-default"}
               = tag.name
-        %li
-          = link_to '削除', "/prototypes/#{@prototype.id}", method: :delete, class: 'btn-default btn'
+
+  .proto-comments
+    %h4 COMMENT FORM
+    .form_wrapper
+      -if user_signed_in?
+        = form_tag("/prototypes/#{@prototype.id}/comments", method: :post, id: "new_comment") do
+          %textarea{cols: "30", name: "content", placeholder: "Post A Comment !!", rows: "2", class: "comment_form", maxlength: '200'}
+          %input{type: "submit", value: "SEND", class: "send_btn "}
+      -else
+        = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
+          %textarea{cols: "30", name: "content", placeholder: "Post A Comment !!", rows: "2", class: "comment_form", maxlength: '45'}
+          %input{type: "submit", value: "SEND", class: "send_btn redirect"}
+    %h4 COMMENTS
+    .comments_area{style: "width:100%;height:600px;overflow:auto;"}
+      -if @comments
+        = render partial: "comment", collection: @comments

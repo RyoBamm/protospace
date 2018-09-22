@@ -15,6 +15,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'kaminari'
 
 gem 'thin', group: :production
 gem 'rails_12factor', group: :production
