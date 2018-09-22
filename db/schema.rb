@@ -11,15 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180913003553) do
-=======
+
 ActiveRecord::Schema.define(version: 20180913011211) do
->>>>>>> master
-=======
-ActiveRecord::Schema.define(version: 20180913011211) do
->>>>>>> master
+
 
   create_table "captured_images", force: :cascade do |t|
     t.string  "content"
@@ -29,20 +23,22 @@ ActiveRecord::Schema.define(version: 20180913011211) do
 
   add_index "captured_images", ["prototype_id"], name: "index_captured_images_on_prototype_id"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+  create_table "prototype_tags", force: :cascade do |t|
+    t.integer  "prototype_id", null: false
+    t.integer  "tag_id",       null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+
   create_table "comments", force: :cascade do |t|
     t.text     "content"
-=======
+
   create_table "likes", force: :cascade do |t|
->>>>>>> master
-=======
-  create_table "likes", force: :cascade do |t|
->>>>>>> master
     t.integer  "user_id"
     t.integer  "prototype_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    
   end
 
   create_table "prototypes", force: :cascade do |t|
@@ -50,23 +46,18 @@ ActiveRecord::Schema.define(version: 20180913011211) do
     t.string   "catch_copy"
     t.text     "concept"
     t.integer  "user_id"
-<<<<<<< HEAD
-<<<<<<< HEAD
+    t.integer  "likes_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "likes_count"
->>>>>>> master
-=======
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "likes_count"
->>>>>>> master
   end
 
   add_index "prototypes", ["user_id"], name: "index_prototypes_on_user_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

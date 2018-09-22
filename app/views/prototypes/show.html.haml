@@ -66,10 +66,10 @@
     .col-md-3
       %h4 Tag List
       %ul.proto-tag-list.list-inline
-        %li
-          %a{href: "#", class: "btn btn-default"} iPad
-        %li
-          %a{href: "#", class: "btn btn-default"} wireframe
+        - @prototype.tags.each do |tag|
+          %li
+            %a{href: "/tags/#{tag.id}", class: "btn btn-default"}
+              = tag.name
 
   .proto-comments
     %h4 COMMENT FORM
@@ -86,4 +86,3 @@
     .comments_area{style: "width:100%;height:600px;overflow:auto;"}
       -if @comments
         = render partial: "comment", collection: @comments
-
