@@ -98,7 +98,7 @@ $(document).on('turbolinks:load', function() {
     .done(function(comment){
       var comment_id = '#' + comment.id;
       var update_html = buildUpdateHTML(comment);
-      $(comment_id).html(update_html);
+      $(comment_id).html(update_html).hide().show(500);
     })
   })
 
