@@ -25,7 +25,6 @@ class Prototype < ActiveRecord::Base
 
   def save_tags(saveprototype_tags)
     current_tags = Tag.pluck(:name) unless self.tags.nil?
-    binding.pry
     old_tags = current_tags - saveprototype_tags
     new_tags = saveprototype_tags - current_tags
 
